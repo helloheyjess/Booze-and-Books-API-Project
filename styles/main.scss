@@ -1,0 +1,179 @@
+@import "setup";
+
+$sunflower: #ffff57;
+
+//Triad
+$disco: #9B1049;
+$jazzberry: #B50950;
+$sky: #00D2F0;
+
+//complementary
+$gem: #24009B;
+$purple: #5023E8;
+$navy: #09001F;
+$moon: #FCFFEE;
+
+body {
+	text-align: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	transition: all 0.5s ease;
+	color: $navy;
+}
+
+h1, h2 {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+h1 {
+	font-size: 5em;
+	font-family: 'Abril Fatface', serif;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.1em;
+	font-family: 'Oswald', sans-serif;
+}
+
+h3, h4, h5 {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+h3 {
+	font-size: 2em;
+	font-weight: 400;
+}
+
+h4 {
+	font-size: 2em;
+	margin: 0;
+}
+
+h5 {
+	margin-top: 5px;
+	font-style: italic;
+	font-size: 1.5em;
+}
+
+p {
+	line-height: 1.5;
+	font-size: 1.2em;
+}
+
+a {
+	color: $purple;
+	text-decoration: none;
+	border-bottom: 4px solid $purple;
+}
+
+img {
+	max-width: 100%;
+}
+
+header {
+	padding: 5%;
+	background: $sunflower;
+}
+
+.little-char {
+	text-transform: lowercase;
+	font-size: 0.3em;
+	letter-spacing: 0;
+	position: relative;
+	top: -20px;
+}
+
+.section-mood {
+	padding: 5%;
+	background: $disco;
+	h3 {
+		color: #ffbed9;
+	}
+}
+
+.btn,
+.mood-btn {
+	border: none;
+	background: $navy;
+	color: $moon;
+	font-size: 1.2em;
+	padding: 25px 35px;
+	margin: 1.5%;
+}
+
+.btn {
+	box-shadow: 
+		2px 2px 0px $moon,
+		6px 6px 0px $navy;
+	padding: 15px 25px;
+}
+
+.mood-btn {
+	box-shadow: 
+		2px 2px 0px $disco,
+		6px 6px 0px $navy;
+}
+
+.results-title {
+	background: $navy;
+	padding: 2.5%;
+	color: $moon;
+}
+
+.section-results {
+	padding: 2%;
+	background: $moon;
+}
+
+.mood-selector  {
+	padding: 3%;
+}
+
+.results {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.highlight {
+	text-transform: uppercase;
+	border-bottom: 4px solid $disco;
+}
+
+.pairing {
+	padding: 2.5%;
+}
+
+.beer, .book {
+	width: 40%;
+}
+
+#beer-img,
+#book-img {
+	mix-blend-mode: multiply;
+	width: 50%;
+	height: auto;
+}
+
+#book-img {
+	width: 40%;
+}
+
+.divider {
+	h2 {
+		font-family: 'Abril Fatface', serif;
+		font-size: 3.5em;
+	}
+}
+
+footer {
+	padding: 2%;
+	background: $sunflower;
+	p {
+		font-family: 'Oswald', sans-serif;
+	}
+}

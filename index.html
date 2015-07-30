@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Booze & Books</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles/animate.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic|Oswald|Abril+Fatface' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<img src="images/beer-by-stolkramaker.png" alt="" class="logo-icon">
+			<img src="images/books-by-Andrey Vasiliev.png" alt="" class="logo-icon">
+			<h1>Booze <span class="little-char">&amp;</span> Books</h1>
+			<h2>Literature and libation pairings based on your mood</h2>
+		</header>
+		<section>
+			<div class="section-mood">
+				<h3>How are you feeling?</h3>
+				<div class="mood-selector">
+					<button id="bold" data-keywords="IPA" class="mood-btn">Bold</button>
+					<button id="dark" data-keywords="porter" class="mood-btn">Dark</button>
+					<button id="sweet" data-keywords="lambic" class="mood-btn">Sweet</button>
+					<button id="mysterious" data-keywords="smoke" class="mood-btn">Mysterious</button>
+					<button id="cranky" data-keywords="sour" class="mood-btn">Cranky</button>
+				</div>
+			</div>
+		</section>
+		<section class="inner-wrapper" id="results">
+			<div class="results-title">
+				<h3>Feeling a little <span class="highlight">Dark</span>?  May we suggest...</h3>
+			</div>
+			<div class="section-results">
+				<div class="results clearfix">
+					<div class="pairing beer">
+						<h4 id="beer-title">Beer Title</h4>
+						<h5 id="beer-style">Beer Style</h5>
+						<img src="http://placehold.it/200x300" alt="" id="beer-img">
+						<p id="beer-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet dolorum minima, quod ex quas culpa nisi quaerat soluta deserunt! Eveniet beatae impedit, culpa ad. Id eligendi, asperiores eos deserunt porro!</p>
+					</div>
+					<div class="divider"><h2>&amp;</h2></div>
+					<div class="pairing book">
+						<h4 id="book-title">Book Title</h4>
+						<h5 id="book-author">Book Author</h5>
+						<img src="http://placehold.it/200x300" alt="" id="book-img">
+						<p id="book-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error expedita eos culpa quos. Amet blanditiis unde architecto, ipsam perspiciatis similique omnis provident repellendus suscipit animi velit facilis. Soluta, voluptatibus, non.</p>
+					</div>
+				</div>
+				<button class="btn">Try Again</button>
+			</div>
+		</section>
+	</div>
+	<footer>
+		<p>Designed &amp; Developed by Jessica Jones &copy; 2015 using the LCBO and New York Times Bestsellers APIs.</p>
+		<p>Icons: Booze by Stolkramaker and Book by Andrey Vasiliev via <a href="http://www.thenounproject.com">The Noun Project.</a></p>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="scripts/scripts.js"></script>
+</body>
+</html>
