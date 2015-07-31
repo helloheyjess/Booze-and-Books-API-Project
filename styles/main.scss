@@ -4,16 +4,7 @@ $sunflower: #ffff57;
 $navy: #09001F;
 $moon: #FCFFEE;
 $disco: #9B1049;
-
-//Triad
-
-$jazzberry: #B50950;
-$sky: #00D2F0;
-
-//complementary
-$gem: #24009B;
 $purple: #5023E8;
-
 
 body {
 	text-align: center;
@@ -30,6 +21,15 @@ h1, h2 {
 h1 {
 	font-size: 5em;
 	font-family: 'Abril Fatface', serif;
+	@media all and (max-width: 690px) {
+		font-size: 4em;
+	}
+	@media all and (max-width: 525px) {
+		font-size: 3em;
+	}
+	@media all and (max-width: 425px) {
+		font-size: 2em;
+	}
 }
 
 h1, h2, h3 {
@@ -39,6 +39,9 @@ h1, h2, h3 {
 h2 {
 	font-size: 1.1em;
 	font-family: 'Oswald', sans-serif;
+	@media all and (max-width: 425px) {
+		font-size: 1em;
+	}
 }
 
 h3, h4, h5 {
@@ -48,28 +51,41 @@ h3, h4, h5 {
 h3 {
 	font-size: 2em;
 	font-weight: 400;
+	@media all and (max-width: 425px){
+		font-size: 1.5em;
+	}
 }
 
 h4 {
 	font-size: 2em;
 	margin: 0;
+	@media all and (max-width: 425px) {
+		font-size: 1.5em;
+	}
 }
 
 h5 {
 	margin-top: 5px;
 	font-style: italic;
 	font-size: 1.5em;
+	@media all and (max-width: 425px) {
+		font-size: 1em;
+	}
 }
 
 p {
 	line-height: 1.5;
 	font-size: 1.2em;
+	@media all and (max-width: 690px) {
+		font-size: 1em;
+	}
 }
 
 a {
 	color: $navy;
 	text-decoration: none;
 	border-bottom: 4px solid $purple;
+	transition: all 0.25s ease-in-out;
 }
 
 img {
@@ -77,8 +93,11 @@ img {
 }
 
 header {
-	padding: 5%;
+	padding: 4%;
 	background: $sunflower;
+	@media all and (max-width: 525px) {
+		padding: 10%;
+	}
 }
 
 .little-char {
@@ -89,11 +108,20 @@ header {
 	top: -20px;
 }
 
+.logo-icon {
+	@media all and (max-width: 690px) {
+		width: 30%;
+	}
+}
+
 .section-mood {
 	padding: 5%;
 	background: $disco;
 	h3 {
 		color: #ffbed9;
+	}
+	@media all and (max-width: 525px) {
+		padding: 10%;
 	}
 }
 
@@ -104,7 +132,14 @@ header {
 	color: $moon;
 	font-size: 1.2em;
 	padding: 25px 35px;
-	margin: 1.5%;
+	margin: 2.5%;
+	@media all and (max-width: 690px) {
+		padding: 15px 25px;
+	}
+	@media all and (max-width: 425px) {
+		font-size: 1em;
+		padding: 10px;
+	}
 }
 
 .btn {
@@ -127,18 +162,15 @@ header {
 }
 
 .section-results {
-	padding: 2%;
+	padding: 1%;
 	background: $moon;
+	@media all and (max-width: 800px) {
+		padding: 10% 2%;
+	}
 }
 
 .mood-selector  {
 	padding: 3%;
-}
-
-.results {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .highlight {
@@ -146,30 +178,48 @@ header {
 	border-bottom: 4px solid $disco;
 }
 
+.results {
+	display: flex;
+	justify-content: center;
+	align-items: top;
+	@media all and (max-width: 800px) {
+		display: block;
+		padding-bottom: 5%;
+	}
+}
+
 .pairing {
-	padding: 2.5%;
+	padding: 2.5% 5%;
 }
 
 .beer, .book {
-	width: 40%;
-}
-
-#booze-img,
-#book-img {
-	mix-blend-mode: multiply;
-	width: 50%;
-}
-
-#book-img {
-	width: 40%;
+	width: 45%;
+	@media all and (max-width: 800px) {
+		width: 80%;
+		margin: 0 auto;
+	}
 }
 
 .divider {
+	align-self: center;
+	width: 10%;
+	text-align: center;
 	h2 {
 		font-family: 'Abril Fatface', serif;
 		font-size: 3.5em;
 	}
+	@media all and (max-width: 800px) {
+		margin: 5% auto;
+	}
 }
+
+#book-img,
+#booze-img {
+	mix-blend-mode: multiply;
+	width: 40%;
+}
+
+
 
 footer {
 	padding: 2%;

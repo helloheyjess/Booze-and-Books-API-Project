@@ -1,56 +1,54 @@
 // Create an empty object and build properties and methods on it instead of creating a bunch of global variables
 var app = {};
-app.bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/2/volumes";
+var bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/2/volumes";
 app.boozeURL = "http://lcboapi.com/products";
 app.boozeKey = "MDo2NTIyNTk3NC0zNjJlLTExZTUtYTg1Zi1kYjU1YzhlYzg2YmM6YXpwU0lhS3phNTdhVDJ4UVg1b0hUTUx6ODQ5UjNaNjhsZDE3";
 
-// Get a random array item when AJAX request is called
-function randomNumber(randomArray) {
-	return Math.floor(Math.random() * randomArray.length);
-}
 
 // Collect data from the user
-	// User selects a mood by clicking on a button
-	// Get the ID of the button they clicked and save to a global variable
-	// Get the button text and insert into highlighted text in results
-	// Scroll down to results section
 	$('.mood-btn').on('click', function(){
-		app.boozeType = $(this).data('keywords');
-		highlightText = $(this).text();
-		
-		$('.highlight').text(highlightText);
-		app.getBooze();
-		app.getBooks();
+		// User selects a mood by clicking on a button
+		// Get the ID of the button they clicked and save it as a variable
+		app.boozeType = $(this).data('boozekeyword');
+		app.bookType = $(this).data('bookkeyword');
 
+		// URL for Book AJAX call changes depending on selection
+		if (app.bookType === "bold") {
+			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1006/volumes";
+		} else if (app.bookType === "sweet") {
+			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1002/volumes";
+		} else if (app.bookType === "dark") {
+			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1003/volumes";
+		} else if (app.bookType === "cranky") {
+			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1004/volumes";
+		} else if (app.bookType === "mysterious") {
+			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1005/volumes";
+		}
+
+		// Get the button text and insert into highlighted text in results
+		highlightText = $(this).text();
+		$('.highlight').text(highlightText);
+
+		app.getBoozeAndBooks();
+
+		// Scroll down to results section
 		$('html,body').animate({
 			scrollTop: $('#results').offset().top
 		}, 1000);
 	});
-
-// When "Try Again" button is clicked, scroll back up to top of page
-	$('.btn').on('click', function(){
-		$('html,body').animate({ scrollTop: 0 }, 1000);
-	});
 	
-// Get data for books from NYT Bestsellers API
-app.getBooks = function(){
+app.getBoozeAndBooks = function(){
+	// Get data for books from Google Books API
 	var booksCall = $.ajax({
-		url: app.bookURL,
+		url: bookURL,
 		type: "GET",
 		dataType: "json",
 		data: {
 			key: "AIzaSyDitBcEotbQY_BPq2qFEimwK9ugNGzK00g"
 		}
 	});
-	// When AJAX call is done
-	$.when(booksCall).done(function(books){
-		var randomBook = randomNumber(books.items);
-		app.displayInfo(books.items[randomBook].volumeInfo);
-	});
-};
 
-// Get data for booze from LCBO API
-app.getBooze = function(){
+	// Get data for booze from LCBO API
 	var boozeCall = $.ajax({
 		url: app.boozeURL,
 		type: "GET",
@@ -63,10 +61,20 @@ app.getBooze = function(){
 			per_page: 100
 		}
 	});
-	// When AJAX call is done
-	$.when(boozeCall).done(function(booze){
-		var randomBooze = randomNumber(booze.result);
-		app.displayInfo(booze.result[randomBooze]);
+
+	// Get a random array item when AJAX request is called
+	function randomNumber(randomArray) {
+		return Math.floor(Math.random() * randomArray.length);
+	}
+
+	$.when(booksCall, boozeCall).done(function(books, booze) {
+		console.log(books)
+		console.log(booze)
+		var randomBook = randomNumber(books[0].items);
+		app.displayInfo(books[0].items[randomBook].volumeInfo);
+
+		var randomBooze = randomNumber(booze[0].result);
+		app.displayInfo(booze[0].result[randomBooze]);
 	});
 };
 
@@ -128,12 +136,14 @@ app.displayInfo = function(data){
 	}
 };
 
-// Initialize methods
-app.init = function(){
-	app.getBooks();
-	app.getBooze();
-};
+// When "Try Again" button is clicked, scroll back up to top of page
+	$('.btn').on('click', function(){
+		$('html,body').animate({ scrollTop: 0 }, 1000);
+	});
 
+app.init = function(){
+	app.getBoozeAndBooks();
+};
 
 $(function(){
 	app.init();
