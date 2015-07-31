@@ -1,17 +1,19 @@
 @import "setup";
 
 $sunflower: #ffff57;
+$navy: #09001F;
+$moon: #FCFFEE;
+$disco: #9B1049;
 
 //Triad
-$disco: #9B1049;
+
 $jazzberry: #B50950;
 $sky: #00D2F0;
 
 //complementary
 $gem: #24009B;
 $purple: #5023E8;
-$navy: #09001F;
-$moon: #FCFFEE;
+
 
 body {
 	text-align: center;
@@ -65,7 +67,7 @@ p {
 }
 
 a {
-	color: $purple;
+	color: $navy;
 	text-decoration: none;
 	border-bottom: 4px solid $purple;
 }
@@ -152,7 +154,7 @@ header {
 	width: 40%;
 }
 
-#beer-img,
+#booze-img,
 #book-img {
 	mix-blend-mode: multiply;
 	width: 50%;
@@ -172,7 +174,4 @@ header {
 footer {
 	padding: 2%;
 	background: $sunflower;
-	p {
-		font-family: 'Oswald', sans-serif;
-	}
 }

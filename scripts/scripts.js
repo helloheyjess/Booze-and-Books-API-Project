@@ -20,6 +20,7 @@ function randomNumber(randomArray) {
 		
 		$('.highlight').text(highlightText);
 		app.getBooze();
+		app.getBooks();
 
 		$('html,body').animate({
 			scrollTop: $('#results').offset().top
@@ -72,38 +73,47 @@ app.getBooze = function(){
 // Display API data on page
 app.displayInfo = function(data){
 	console.log(data);
-	// If result has an image, display booze data on the page
+	// If booze has an image, display booze data on the page
 	if (data.image_url != null) {
 		// Insert booze result title on page
-		var beerTitle = data.name;
-		$('#beer-title').text(beerTitle);
+		var boozeTitle = data.name;
+		$('#booze-title').text(boozeTitle);
 
 		//If the result has a style, insert booze result style on page
 		if (data.style != null){
-			var beerStyle = data.style;
-			$('#beer-style').text(beerStyle);
+			var boozeStyle = data.style;
+			$('#booze-style').text(boozeStyle);
 		} else {
-			$('#beer-style').text('');
+			$('#booze-style').text('');
 		}
 		//Insert booze result image on page
-		$('#beer-img').attr('src', data.image_url);
+		$('#booze-img').attr('src', data.image_url);
+
+		// Insert booze info link on page
+		var boozeLink = data.name.replace(/['\s]/g, '-');
+		var baseURL = "http://www.lcbo.com/lcbo/product/";
+		var productURL = baseURL + boozeLink + "/" + data.id;
+		$('#booze-info').attr('href', productURL);
 
 		//If the result has tasting notes, insert booze result tasting note on page
 		if (data.tasting_note != null){
-			var beerNote = data.tasting_note;
-			$('#beer-note').text(beerNote);
+			var boozeNote = data.tasting_note;
+			$('#booze-note').text(boozeNote);
 		} else {
-			$('#beer-note').text('Such booze');
+			$('#booze-note').text('');
 		}
 	};
 
-	//Display book data on the page
+	// If book has an image, display book data on the page
 	if (data.imageLinks != null) {
 		var bookTitle = data.title;
 		$('#book-title').text(bookTitle);
 
 		var bookAuthor = data.authors;
 		$('#book-author').text(bookAuthor);
+
+		var bookInfo = data.infoLink;
+		$('#book-info').attr('href', bookInfo);
 
 		var bookImage = data.imageLinks.thumbnail;
 		$('#book-img').attr('src', bookImage);
@@ -116,8 +126,6 @@ app.displayInfo = function(data){
 			$('#book-description').text(bookDescription);		
 		}
 	}
-	
-
 };
 
 // Initialize methods
