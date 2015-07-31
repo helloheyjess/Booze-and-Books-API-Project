@@ -1,6 +1,6 @@
 // Create an empty object and build properties and methods on it instead of creating a bunch of global variables
 var app = {};
-app.bookURL = "http://api.nytimes.com/svc/books/v2/lists/overview.jsonp";
+app.bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/2/volumes";
 app.boozeURL = "http://lcboapi.com/products";
 app.boozeKey = "MDo2NTIyNTk3NC0zNjJlLTExZTUtYTg1Zi1kYjU1YzhlYzg2YmM6YXpwU0lhS3phNTdhVDJ4UVg1b0hUTUx6ODQ5UjNaNjhsZDE3";
 
@@ -34,23 +34,17 @@ function randomNumber(randomArray) {
 // Get data for books from NYT Bestsellers API
 app.getBooks = function(){
 	var booksCall = $.ajax({
-		url: "https://www.googleapis.com/books/v1/volumes",
+		url: app.bookURL,
 		type: "GET",
 		dataType: "json",
 		data: {
-			key: "AIzaSyDitBcEotbQY_BPq2qFEimwK9ugNGzK00g",
-			q: "subject+fiction",
-			printType: "books",
-			maxResults: 40,
-			orderBy: "newest"
+			key: "AIzaSyDitBcEotbQY_BPq2qFEimwK9ugNGzK00g"
 		}
 	});
 	// When AJAX call is done
 	$.when(booksCall).done(function(books){
 		var randomBook = randomNumber(books.items);
 		app.displayInfo(books.items[randomBook].volumeInfo);
-		
-		// console.log(books.items);
 	});
 };
 
@@ -125,11 +119,6 @@ app.displayInfo = function(data){
 	
 
 };
-
-function maxChar(string) {
-	
-}
-
 
 // Initialize methods
 app.init = function(){
