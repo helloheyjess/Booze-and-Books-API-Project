@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Booze & Books</title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/animate.css">
@@ -22,14 +23,14 @@
 				<h3>How are you feeling?</h3>
 				<div class="mood-selector">
 					<button id="bold" data-boozekeyword="IPA" data-bookkeyword="bold" class="mood-btn">Bold</button>
-					<button id="dark" data-boozekeyword="porter" data-bookkeyword="dark" class="mood-btn">Dark</button>
+					<button id="dark" data-boozekeyword="stout" data-bookkeyword="dark" class="mood-btn">Dark</button>
 					<button id="sweet" data-boozekeyword="radler" data-bookkeyword="sweet" class="mood-btn">Sweet</button>
-					<button id="mysterious" data-boozekeyword="smoke" data-bookkeyword="mysterious" class="mood-btn">Mysterious</button>
+					<button id="mysterious" data-boozekeyword="spice" data-bookkeyword="mysterious" class="mood-btn">Mysterious</button>
 					<button id="cranky" data-boozekeyword="sour" data-bookkeyword="cranky" class="mood-btn">Cranky</button>
 				</div>
 			</div>
 		</section>
-		<section class="inner-wrapper" id="results">
+		<section class="inner-wrapper hide-results" id="results">
 			<div class="results-title">
 				<h3>Feeling a little <span class="highlight">Dark</span>?  May we suggest...</h3>
 			</div>
@@ -38,17 +39,21 @@
 					<div class="pairing beer">
 						<h4 id="booze-title">Beer Title</h4>
 						<h5 id="booze-style">Beer Style</h5>
-						<img src="http://placehold.it/200x300" alt="" id="booze-img">
+						<div class="img-container">
+							<img src="" alt="Picture of Booze" id="booze-img">
+						</div>
 						<p id="booze-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet dolorum minima, quod ex quas culpa nisi quaerat soluta deserunt! Eveniet beatae impedit, culpa ad. Id eligendi, asperiores eos deserunt porro!</p>
-						<p><a href="" id="booze-info">See this booze on LCBO</a></p>
+						<p><a href="" id="booze-info" target="_blank">See this booze on LCBO</a></p>
 					</div>
 					<div class="divider"><h2>&amp;</h2></div>
 					<div class="pairing book">
 						<h4 id="book-title">Book Title</h4>
 						<h5 id="book-author">Book Author</h5>
-						<img src="http://placehold.it/200x300" alt="" id="book-img">
+						<div class="img-container">
+							<img src="" alt="Picture of Book" id="book-img">
+						</div>
 						<p id="book-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error expedita eos culpa quos. Amet blanditiis unde architecto, ipsam perspiciatis similique omnis provident repellendus suscipit animi velit facilis. Soluta, voluptatibus, non.</p>
-						<p><a href="" id="book-info">See this book on Google Books</a></p>
+						<p><a href="" id="book-info" target="_blank">See this book on Google Books</a></p>
 					</div>
 				</div>
 				<button class="btn">Try Again</button>

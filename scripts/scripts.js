@@ -31,6 +31,8 @@ app.boozeKey = "MDo2NTIyNTk3NC0zNjJlLTExZTUtYTg1Zi1kYjU1YzhlYzg2YmM6YXpwU0lhS3ph
 
 		app.getBoozeAndBooks();
 
+		$('.hide-results, footer').addClass('show');
+
 		// Scroll down to results section
 		$('html,body').animate({
 			scrollTop: $('#results').offset().top
@@ -92,7 +94,7 @@ app.displayInfo = function(data){
 			var boozeStyle = data.style;
 			$('#booze-style').text(boozeStyle);
 		} else {
-			$('#booze-style').text('');
+			$('#booze-style').html('<br>');
 		}
 		//Insert booze result image on page
 		$('#booze-img').attr('src', data.image_url);
@@ -106,9 +108,13 @@ app.displayInfo = function(data){
 		//If the result has tasting notes, insert booze result tasting note on page
 		if (data.tasting_note != null){
 			var boozeNote = data.tasting_note;
+			// Limit booze description length to 200 characters
+			if(boozeNote.length > 200) {
+		    	boozeNote = boozeNote.substring(0,199)+"...";
+			}
 			$('#booze-note').text(boozeNote);
 		} else {
-			$('#booze-note').text('');
+			$('#booze-note').html('<br>');
 		}
 	};
 
@@ -127,7 +133,7 @@ app.displayInfo = function(data){
 		$('#book-img').attr('src', bookImage);
 		if (data.description != null) {
 			var bookDescription = data.description;
-			// Limit book description length to 100 characters
+			// Limit book description length to 200 characters
 			if(bookDescription.length > 200) {
 		    	bookDescription = bookDescription.substring(0,199)+"...";
 			}
