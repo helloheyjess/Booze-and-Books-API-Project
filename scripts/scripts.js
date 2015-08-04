@@ -1,4 +1,3 @@
-// Create an empty object and build properties and methods on it instead of creating a bunch of global variables
 var app = {};
 var bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/2/volumes";
 app.boozeURL = "http://lcboapi.com/products";
@@ -12,7 +11,7 @@ app.boozeKey = "MDo2NTIyNTk3NC0zNjJlLTExZTUtYTg1Zi1kYjU1YzhlYzg2YmM6YXpwU0lhS3ph
 		app.boozeType = $(this).data('boozekeyword');
 		app.bookType = $(this).data('bookkeyword');
 
-		// URL for Book AJAX call changes depending on selection
+		// URL for Google Books API call changes depending on selection
 		if (app.bookType === "bold") {
 			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1006/volumes";
 		} else if (app.bookType === "sweet") {
@@ -25,12 +24,14 @@ app.boozeKey = "MDo2NTIyNTk3NC0zNjJlLTExZTUtYTg1Zi1kYjU1YzhlYzg2YmM6YXpwU0lhS3ph
 			bookURL = "https://www.googleapis.com/books/v1/users/115753440391396010607/bookshelves/1005/volumes";
 		}
 
-		// Get the button text and insert into highlighted text in results
+		// Get the button text and insert into highlighted text in results-title
 		highlightText = $(this).text();
 		$('.highlight').text(highlightText);
 
+		// Get results from Google Books and LCBO API's
 		app.getBoozeAndBooks();
 
+		// Show results and footer
 		$('.hide-results, footer').addClass('show');
 
 		// Scroll down to results section
@@ -69,6 +70,7 @@ app.getBoozeAndBooks = function(){
 		return Math.floor(Math.random() * randomArray.length);
 	}
 
+	// When the calls are completed, retrieve a random book and booze and display on the page
 	$.when(booksCall, boozeCall).done(function(books, booze) {
 		console.log(books)
 		console.log(booze)
@@ -112,9 +114,9 @@ app.displayInfo = function(data){
 			if(boozeNote.length > 200) {
 		    	boozeNote = boozeNote.substring(0,199)+"...";
 			}
-			$('#booze-note').text(boozeNote);
+			$('#booze-description').text(boozeNote);
 		} else {
-			$('#booze-note').html('<br>');
+			$('#booze-description').html('<br>');
 		}
 	};
 
@@ -142,9 +144,9 @@ app.displayInfo = function(data){
 	}
 };
 
-// When "Try Again" button is clicked, scroll back up to top of page
+// When "Try Again" button is clicked, refresh page
 	$('.btn').on('click', function(){
-		$('html,body').animate({ scrollTop: 0 }, 1000);
+		location.reload();
 	});
 
 app.init = function(){

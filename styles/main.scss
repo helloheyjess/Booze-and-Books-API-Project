@@ -127,7 +127,7 @@ header {
 	padding: 5%;
 	background: $disco;
 	h3 {
-		color: #ffbed9;
+		color: $moon;
 	}
 	@media all and (max-width: 525px) {
 		padding: 10%;
@@ -162,6 +162,10 @@ header {
 	box-shadow: 
 		2px 2px 0px $disco,
 		6px 6px 0px $navy;
+	transition: all 0.25s ease-in-out;	
+	&:hover {
+		transform: translateY(-5px);
+	}
 }
 
 .results-title {
@@ -187,7 +191,7 @@ header {
 	border-bottom: 4px solid $disco;
 }
 
-.results {
+.pairings {
 	display: flex;
 	justify-content: center;
 	align-items: top;
@@ -197,11 +201,11 @@ header {
 	}
 }
 
-.pairing {
+.pairing-item {
 	padding: 2.5% 5%;
 }
 
-.beer, .book {
+.booze, .book {
 	width: 45%;
 	@media all and (max-width: 800px) {
 		width: 80%;
