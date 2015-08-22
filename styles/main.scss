@@ -99,11 +99,20 @@ a {
 
 img {
 	max-width: 100%;
+	max-height: 100%;
 }
 
 header {
 	padding: 4%;
 	background: $sunflower;
+	a {
+		border-bottom: none;
+		background: none;
+		color: $purple;
+		&:hover {
+			color: $navy;
+		}
+	}
 	@media all and (max-width: 525px) {
 		padding: 10%;
 	}
@@ -192,8 +201,14 @@ header {
 }
 
 .pairings {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
 	display: flex;
+	-webkit-justify-content: center;
 	justify-content: center;
+	-webkit-align-items: top;
 	align-items: top;
 	@media all and (max-width: 800px) {
 		display: block;

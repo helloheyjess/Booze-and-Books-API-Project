@@ -62,6 +62,9 @@ app.getBoozeAndBooks = function(){
 		data: {
 			q : app.boozeType,
 			per_page: 100
+		},
+		error: function(){
+			$.ajax(this);
 		}
 	});
 
@@ -72,8 +75,6 @@ app.getBoozeAndBooks = function(){
 
 	// When the calls are completed, retrieve a random book and booze and display on the page
 	$.when(booksCall, boozeCall).done(function(books, booze) {
-		console.log(books)
-		console.log(booze)
 		var randomBook = randomNumber(books[0].items);
 		app.displayInfo(books[0].items[randomBook].volumeInfo);
 
@@ -84,7 +85,6 @@ app.getBoozeAndBooks = function(){
 
 // Display API data on page
 app.displayInfo = function(data){
-	console.log(data);
 	// If booze has an image, display booze data on the page
 	if (data.image_url != null) {
 		// Insert booze result title on page
