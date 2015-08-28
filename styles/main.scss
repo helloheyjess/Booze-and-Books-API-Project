@@ -50,11 +50,8 @@ h3, h4, h5 {
 }
 
 h3 {
-	font-size: 2em;
+	font-size: calc(1vw + 1vh + 2vmin);
 	font-weight: 400;
-	@media all and (max-width: 425px){
-		font-size: 1.5em;
-	}
 }
 
 h4 {
@@ -241,6 +238,7 @@ header {
 	}
 }
 
+.booze-img-container,
 .img-container {
 	height: 300px;
 	width: 200px;
@@ -248,8 +246,8 @@ header {
 	margin: 0 auto;
 }
 
-#book-img,
-#booze-img {
+.book-img,
+.booze-img {
 	mix-blend-mode: multiply;
 	margin: auto;
 }
